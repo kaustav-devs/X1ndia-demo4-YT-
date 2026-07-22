@@ -1,13 +1,20 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { useRouter } from "expo-router";
 
 const Index = () => {
+  const router = useRouter();
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>X1ndia ⚽</Text>
-      <Text style={styles.subtitle}>
-        Building the future of Indian football.
-      </Text>
+      <Text style={styles.title}>X1ndia</Text>
+
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => router.push("/welcome")}
+      >
+        <Text style={styles.buttonText}>Welcome</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -20,17 +27,22 @@ const styles = StyleSheet.create({
     backgroundColor: "#0B0F1A",
     justifyContent: "center",
     alignItems: "center",
-    padding: 20,
   },
   title: {
-    fontSize: 36,
+    fontSize: 40,
+    color: "#fff",
     fontWeight: "bold",
-    color: "#FFFFFF",
-    marginBottom: 10,
+    marginBottom: 40,
   },
-  subtitle: {
-    fontSize: 16,
-    color: "#A0A0A0",
-    textAlign: "center",
+  button: {
+    backgroundColor: "#00A651",
+    paddingHorizontal: 35,
+    paddingVertical: 15,
+    borderRadius: 12,
+  },
+  buttonText: {
+    color: "#fff",
+    fontSize: 18,
+    fontWeight: "600",
   },
 });
