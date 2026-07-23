@@ -1,32 +1,53 @@
 import React from "react";
 import { Stack } from "expo-router";
+import { StatusBar } from "expo-status-bar";
 
-const RootLayout = () => {
+const Layout = () => {
   return (
-    <Stack
-      screenOptions={{
-        headerShown: false,
-        animation: "slide_from_right",
-        contentStyle: {
-          backgroundColor: "#ffffff",
-        },
-      }}
-    >
-      <Stack.Screen
-        name="index"
-        options={{
-          animation: "none",
-        }}
-      />
+    <>
+      <StatusBar style="light" translucent />
 
-      <Stack.Screen
-        name="welcome"
-        options={{
-          animation: "fade_from_bottom",
+      <Stack
+        screenOptions={{
+          // Hide the default navigation header
+          headerShown: false,
+
+          // Smooth transitions
+          animation: "slide_from_right",
+
+          // App background
+          contentStyle: {
+            backgroundColor: "#0F172A",
+          },
+
+          // Prevent screen flicker
+          animationDuration: 250,
+
+          // Enable gestures
+          gestureEnabled: true,
+
+          // Use full screen
+          presentation: "card",
         }}
-      />
-    </Stack>
+      >
+        {/* Authentication / Entry */}
+        <Stack.Screen
+          name="index"
+          options={{
+            title: "Home",
+          }}
+        />
+
+        {/* Welcome Screen */}
+        <Stack.Screen
+          name="welcome"
+          options={{
+            title: "Welcome",
+          }}
+        />
+      </Stack>
+    </>
   );
 };
 
-export default RootLayout;
+export default Layout;
